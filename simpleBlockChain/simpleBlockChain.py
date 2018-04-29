@@ -2,7 +2,7 @@
 #-*- coding:utf-8 -*-
 
 '''
-说明： 模拟区块链生成及挖矿过程的主程序
+说明： 以列链方式模拟区块链生成
 作者： minsang
 时间： 2017-4-28
 '''
@@ -23,12 +23,12 @@ def next_block(last_block):
     this_index = last_block.index + 1
     this_timestamp = date.datetime.now()
     this_data = "Hey! I'm Block" + str(this_index)
-    this_hash = last_block.previous_hash  # ?
-    return block.Block(this_index, this_timestamp, this_data, this_hash)
+    this_previous_hash = last_block.hash
+    return block.Block(this_index, this_timestamp, this_data, this_previous_hash)
 
 if __name__ == '__main__':
     '''
-    使用简单列表代表一个最初区块链
+    使用简单列表代表一个最初区块链,并以列别中添加20个新交易区块为区块链增长的模拟过程
     '''
     blockchain = [create_genesis_block()]
     previous_block = blockchain[0]

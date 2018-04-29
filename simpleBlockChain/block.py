@@ -14,6 +14,7 @@ class Block:
         self.timestamp = timestamp
         self.data = data
         self.previous_hash = previous_hash
+        self.hash = self.hash_block()
 
     def hash_block(self):
         sha = hasher.sha256()
